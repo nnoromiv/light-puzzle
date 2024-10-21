@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Define your custom colors here -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color>  <!-- Main theme color -->
+    <color name="colorPrimaryVariant">#3700B3</color>  <!-- Darker variant of the main color -->
+    <color name="colorOnPrimary">#FFFFFF</color>  <!-- Text color on primary background -->
+    <color name="colorSecondary">#03DAC6</color>  <!-- Accent color for buttons, links, etc. -->
+    <color name="colorOnSecondary">#000000</color>  <!-- Text color on secondary background -->
+    <color name="colorBackground">#FFFFFF</color>  <!-- Background color -->
+    <color name="colorSurface">#FFFFFF</color>  <!-- For surfaces (e.g., card backgrounds) -->
+    <color name="colorError">#B00020</color>  <!-- Error messages color -->
+    <color name="colorOnError">#FFFFFF</color>  <!-- Text color on error background -->
+    <color name="textColorPrimary">#000000</color>  <!-- Primary text color -->
 </resources>

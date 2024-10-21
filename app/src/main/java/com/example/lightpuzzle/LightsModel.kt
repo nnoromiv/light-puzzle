@@ -7,11 +7,11 @@ class LightsModel(gridSize: Int, private val notStrict: Boolean) {
     private val tag = "LightsModel"
 
     // Create 2D Array
-    private var grid = Array(gridSize){
+    var grid = Array(gridSize){
         IntArray(gridSize)
     }
 
-    private var n = gridSize
+    var n = gridSize
 
     // Check if switch is on
     private fun isSwitchOn(i: Int, j:Int):Boolean {
@@ -47,19 +47,7 @@ class LightsModel(gridSize: Int, private val notStrict: Boolean) {
     }
 
     fun isSolved(): Boolean {
-        var onCount = 0
-
-        // Count all switches that is ON
-        for(i in 0 until n){
-            for(j in 0 until n){
-                if(grid[i][j] == 1){
-                    onCount++
-                }
-            }
-        }
-
-        // Puzzle is solved
-        return onCount == (n*n)-1
+        return getScore() == (n * n) - 1
     }
 
     // toString Method for test purposes
@@ -82,5 +70,23 @@ class LightsModel(gridSize: Int, private val notStrict: Boolean) {
         } catch (e: Exception){
             Log.e(tag, e.message.toString())
         }
+    }
+
+    fun reset() {
+        for (i in grid.indices) {
+            for (j in grid[i].indices) {
+                grid[i][j] = 0  // Turn all lights off
+            }
+        }
+    }
+
+    fun getScore(): Int {
+        var score = 0
+        for (i in grid.indices) {
+            for (j in grid[i].indices) {
+                if (grid[i][j] == 1) score++  // Count the lights that are on
+            }
+        }
+        return score
     }
 }
