@@ -1,14 +1,21 @@
 package com.example.lightpuzzle
 
 import android.util.Log
+import java.io.Serializable
 
-class LightsModel(gridSize: Int, private val notStrict: Boolean) {
+class LightsModel(gridSize: Int, private val notStrict: Boolean): Serializable {
 
     private val tag = "LightsModel"
 
     // Create 2D Array
-    var grid = Array(gridSize){
-        IntArray(gridSize)
+    var grid = if (gridSize == 0) {
+        Array(5) {
+            IntArray(5)
+        }
+    } else {
+        Array(gridSize) {
+            IntArray(gridSize)
+        }
     }
 
     var n = gridSize
@@ -47,7 +54,14 @@ class LightsModel(gridSize: Int, private val notStrict: Boolean) {
     }
 
     fun isSolved(): Boolean {
-        return getScore() == (n * n) - 1
+        var on = 0
+        for(i in 0 until n){
+            for (j in 0 until n){
+                if(grid[i][j] == 1) on++
+            }
+        }
+
+        return on == (n * n) - 1
     }
 
     // toString Method for test purposes
